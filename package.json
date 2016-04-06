@@ -1,0 +1,27 @@
+{
+  "name": "maybell",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhangchiqing/maybell.git"
+  },
+  "keywords": [
+    "maybe",
+    "map",
+    "filter",
+    "fold",
+    "lift",
+    "monad"
+  ],
+  "author": "Leo Zhang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zhangchiqing/maybell/issues"
+  },
+  "homepage": "https://github.com/zhangchiqing/maybell#readme"
+}
