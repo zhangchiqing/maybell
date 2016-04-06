@@ -39,13 +39,13 @@ function isJust(x) {
 function id(x) {
   return x;
 }
-// > map(id)(undefined)
+// > fmap(id)(undefined)
 // undefined
-// > map(id)(1)
+// > fmap(id)(1)
 // 1
-// > map(id)({ a: 1, b: 2 })
+// > fmap(id)({ a: 1, b: 2 })
 // { a: 1, b: 2 }
-function map(fn) {
+function fmap(fn) {
   return function(x) {
     if (isNothing(x)) {
       return empty();
@@ -99,7 +99,7 @@ function sequence(arr) {
 // undefined
 function lift(fn) {
   return function() {
-    return map(apply(fn))(sequence(toArray(arguments)));
+    return fmap(apply(fn))(sequence(toArray(arguments)));
   };
 }
 
@@ -133,7 +133,7 @@ function gt3(x) {
 //// undefined
 function traverse(fn) {
   return pipe(function(arr) {
-    return arr.map(map(fn));
+    return arr.map(fmap(fn));
   }, sequence);
 }
 
@@ -141,7 +141,7 @@ module.exports = {
   empty: empty,
   isNothing: isNothing,
   isJust: isJust,
-  map: map,
+  fmap: fmap,
   lift: lift,
   sequence: sequence,
   traverse: traverse,
