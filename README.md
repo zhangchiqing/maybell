@@ -1,9 +1,10 @@
-Installation
+maybell is a lightweight library that provides functions to fight against `undefined`.
+
+## Installation
 ```
 $ npm install maybell
 ```
 
-maybell is a lightweight library that provides functions to fight against `undefined`.
 
 ## API
 
@@ -14,7 +15,9 @@ fmap :: (a -> b) -> Maybe a -> Maybe b
 ```
 
 Takes a function which takes a value of type "a" and returns a value of type "b", and Maybe value, applies the function to the value if the value is not undefined, or returns undefined if the value is undefined.
+
 `Maybe a` here means a value that could be either undefined or any other type. It could be `undefined` or `"foo"`, in which case type "a" is String. Or it could be `undefined` or `1`, then type "a" is Number. But it can't be `undefined` or `"foo"` or `1`.
+
 `Maybe b` means its value could be `undefined` or any other type which doesn't have to be the same type as type "a".
 
 Example:
