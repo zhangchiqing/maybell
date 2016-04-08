@@ -125,12 +125,12 @@ function gt3(x) {
 // (a -> Maybe b) -> Array a -> Maybe Array b
 // > traverse(gt3)([5, 6, 7])
 // [5, 6, 7]
-//// > traverse(gt3)([0, 1, 2])
-//// undefined
-//// > traverse(gt3)([])
-//// undefined
-//// > traverse(gt3)([5, 6, 1])
-//// undefined
+// > traverse(gt3)([0, 1, 2])
+// undefined
+// > traverse(gt3)([])
+// []
+// > traverse(gt3)([5, 6, 1])
+// undefined
 function traverse(fn) {
   return pipe(function(arr) {
     return arr.map(fmap(fn));
