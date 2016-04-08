@@ -14,15 +14,27 @@ $ npm install maybell
 fmap :: (a -> b) -> Maybe a -> Maybe b
 ```
 
-Takes a function which takes a value of type "a" and returns a value of type "b", and Maybe value, applies the function to the value if the value is not undefined, or returns undefined if the value is undefined.
-
-`Maybe a` here means a value that could be either undefined or any other type. It could be `undefined` or `"foo"`, in which case type "a" is String. Or it could be `undefined` or `1`, then type "a" is Number. But it can't be `undefined` or `"foo"` or `1`.
-
-`Maybe b` means its value could be `undefined` or any other type which doesn't have to be the same type as type "a".
+Takes a function, applies the function to the input value, returns the result if the input value is not undefined, or returns undefined if the value is undefined.
 
 Example:
 ```
-// Bad
+fmap(function(x) {
+  return x + 1;
+})(undefined);
+//=> undefined
+
+fmap(function(x) {
+  return x + 1;
+})(2);
+//=> 3
+```
+
+`Maybe a` here means a value that could be either undefined or any other type. It could be `undefined` or `"foo"`, in which case Type "a" is String. Or it could be `undefined` or `1`, then Type "a" is Number. But it can't be `undefined` or `"foo"` or `1`.
+
+`Maybe b` means its value could be `undefined` or any other type which doesn't have to be the same type as Type "a".
+
+Other use case:
+```
 function getUserName(user) {
   return user.name;
 }
@@ -30,7 +42,7 @@ function getUserName(user) {
 getUserName();
 //=> !TypeError: Cannot read property 'name' of undefined
 
-// Works
+// Workaround
 function getUserName(user) {
   if(!user) {
     return ;
@@ -43,10 +55,6 @@ getUserName();
 //=> undefined
 
 // Better
-function getUserName(user) {
-  return user.name;
-}
-
 var getUserNameFromMaybeUser = fmap(getUserName);
 
 getUserNameFromMaybeUser();
